@@ -19,11 +19,16 @@ const calculatorSlice = createSlice({
       ...currentState,
       currentNum: 0,
     }),
+    setPreviousNum: (currentState, action: PayloadAction<number>) => ({
+      ...currentState,
+      previousNum: action.payload,
+    }),
   },
 });
 
 export const {
   addDigit: addDigitActionCreator,
   deleteDigits: deleteDigitsActionCreator,
+  setPreviousNum: setPreviousNumActionCreator,
 } = calculatorSlice.actions;
 export const calculatorReducer = calculatorSlice.reducer;
