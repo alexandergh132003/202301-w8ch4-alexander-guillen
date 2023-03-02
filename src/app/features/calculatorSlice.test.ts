@@ -3,6 +3,7 @@ import {
   addDigitActionCreator,
   calculatorReducer,
   deleteDigitsActionCreator,
+  setPreviousNumActionCreator,
 } from "./calculatorSlice";
 
 describe("Given a calculatorReducer", () => {
@@ -37,6 +38,24 @@ describe("Given a calculatorReducer", () => {
       );
 
       expect(currentNum).toBe(0);
+    });
+  });
+
+  describe("When it receives a setPreviousNum action wich is called with previousNum 14 and a initialState with previousNum 0", () => {
+    test("Then it should return a new state with previousNum equal to 14", () => {
+      const initialState: CalculatorState = {
+        currentNum: 0,
+        previousNum: 0,
+        result: 0,
+      };
+      const setPreviousNumAction = setPreviousNumActionCreator(14);
+
+      const { previousNum } = calculatorReducer(
+        initialState,
+        setPreviousNumAction
+      );
+
+      expect(previousNum).toBe(14);
     });
   });
 });
