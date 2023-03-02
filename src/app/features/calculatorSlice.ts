@@ -1,6 +1,3 @@
-// Create a reducer with createSlice for a calculator
-// that can add, subtract, multiply, and divide.
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CalculatorState } from "../../types";
 
@@ -18,8 +15,15 @@ const calculatorSlice = createSlice({
       ...currentState,
       currentNum: +`${currentState.currentNum}${action.payload}`,
     }),
+    deleteDigits: (currentState) => ({
+      ...currentState,
+      currentNum: 0,
+    }),
   },
 });
 
-export const { addDigit: addDigitActionCreator } = calculatorSlice.actions;
+export const {
+  addDigit: addDigitActionCreator,
+  deleteDigits: deleteDigitsActionCreator,
+} = calculatorSlice.actions;
 export const calculatorReducer = calculatorSlice.reducer;
